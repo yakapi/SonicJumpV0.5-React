@@ -1,0 +1,16 @@
+.GameOver{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: helvetica;
+  font-weight: bold;
+  color: darkred;
+  font-size: 34px;
+}
+.dis-none{
+  display: none;
+}
