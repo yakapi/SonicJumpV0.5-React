@@ -1,9 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Timer from './Timer/Timer'
 import Phaser from "phaser"
 import background_game from './assets/IMG/bg.jpg'
 import sonic from './assets/IMG/jump.gif'
-import building from './assets/IMG/box.jpg'
+import building from './assets/IMG/build1.jpg'
+import floor from './assets/IMG/box.jpg'
 import './GameView.css'
 
 // Global Parameter
@@ -15,11 +17,16 @@ let width_box = [screen_width / 100 * 15, screen_width / 100 * 20, screen_width 
 let cooldown_key, loose, exit , destroyed = false
 let keyboard, hero
 let box = []
-let LoadingTime = 6000
+let LoadingTime = 10000
+let LoaderCooldown = 8000
 
 class GameView extends React.Component {
   componentDidMount(){
     console.log('GameMount');
+    setTimeout(()=>{
+      let LoaderOver = document.querySelector('.LoaderOver')
+      LoaderOver.classList.add('dis-none')
+    },LoaderCooldown)
     box = []
     function getRandomInt(max) {
       return Math.floor(Math.random() * max);
@@ -51,7 +58,7 @@ class GameView extends React.Component {
       this.load.image('sonic', sonic)
       this.load.image('background', background_game)
       this.load.image('box', building)
-      this.load.image('floor', building)
+      this.load.image('floor', floor)
     }
     function create() {
       console.log('create');
@@ -135,7 +142,7 @@ class GameView extends React.Component {
           }
 
           // Parametre GAME OVER
-          if(hero.x < 77 || hero.y < 97){
+          if(hero.x < 77 || hero.y > screen_height - 50){
             if (!loose) {
               loose = true
             }
@@ -164,7 +171,11 @@ class GameView extends React.Component {
       <div className="GameView">
         <div className="GameOver dis-none">
           <h1>Game Over</h1>
-          <p onClick={this.props.run}>Retour</p>
+          <p className="ButtonStart" onClick={this.props.run}>Retour</p>
+        </div>
+        <Timer time={LoadingTime}/>
+        <div className="LoaderOver">
+          <div className="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
         </div>
       </div>
     )

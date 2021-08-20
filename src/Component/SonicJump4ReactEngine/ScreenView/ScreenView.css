@@ -1,0 +1,119 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+.ScreenView{
+  height: 100vh;
+  background-image: url('sonic_screen.jpg');
+  background-size: cover;
+  font-family: helvetica;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.ScreenView h1{
+  font-size: 64px;
+  color: white;
+  font-weight: bold;
+}
+.ScreenBoard{
+  margin: 35px;
+  padding: 35px;
+  border: 1px solid white;
+  border-radius: 5px;
+  box-shadow: -16px 0px 23px -20px rgb(0 0 0 / 40%), 0 3px 15px -1px rgb(0 0 0 / 30%);
+  background: #16768C;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.StartPanel{
+  margin: 0px 35px;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+}
+.LeaderBoard{
+  height: 100%;
+}
+.ButtonStart {
+	box-shadow: 0px 0px 0px 2px #51B4C7;
+	background:linear-gradient(to bottom, #51B4C7 5%, #16768C 100%);
+	background-color:#7892c2;
+	border-radius:10px;
+	border:1px solid white;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:19px;
+	padding:12px 37px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #283966;
+}
+.ButtonStart:hover {
+	background:linear-gradient(to bottom, #16768C 5%, #51B4C7 100%);
+	background-color:#476e9e;
+}
+.ButtonStart:active {
+	position:relative;
+	top:1px;
+}
+.AnimateTransition{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: #16768C;
+  transition: all 1s ease-in-out;
+  left: 0;
+}
+.hidden{
+  left: -150%;
+}
