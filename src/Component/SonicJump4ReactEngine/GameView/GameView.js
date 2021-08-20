@@ -19,8 +19,10 @@ let keyboard, hero
 let box = []
 let LoadingTime = 10000
 let LoaderCooldown = 8000
+let score = 0
 
 class GameView extends React.Component {
+
   componentDidMount(){
     console.log('GameMount');
     setTimeout(()=>{
@@ -51,6 +53,8 @@ class GameView extends React.Component {
     //ELEMENT DU SCREEN DE JEU
     const game = new Phaser.Game(config);
     let GameOverScreen = document.querySelector('.GameOver')
+    let ScoreNumber = document.querySelector('.ScoreNumber')
+    let ScoreOver = document.querySelector('.ScoreOver')
 
 
     function preload() {
@@ -115,6 +119,9 @@ class GameView extends React.Component {
       console.log('update');
       setTimeout(()=>{
         if (!exit) {
+          score++
+          ScoreNumber.innerHTML = score
+          ScoreOver.innerHTML = 'Score: ' + score
           // Fonctionnement des boxs
           for (var i = 0; i < box.length; i++) {
             box[i].setVelocity(-300, 0)
@@ -153,6 +160,8 @@ class GameView extends React.Component {
           if (!destroyed) {
             destroyed = true
             loose = false
+
+            score = 0
             this.sys.game.destroy(true)
           }
           // this.sys.game.destroy(true)
@@ -171,9 +180,14 @@ class GameView extends React.Component {
       <div className="GameView">
         <div className="GameOver dis-none">
           <h1>Game Over</h1>
+          <p className="ScoreOver"></p>
           <p className="ButtonStart" onClick={this.props.run}>Retour</p>
         </div>
         <Timer time={LoadingTime}/>
+        <div className="GameScoreBoard">
+          <p>Score :</p>
+          <p className="ScoreNumber">0</p>
+        </div>
         <div className="LoaderOver">
           <div className="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
         </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import ScreenView from './ScreenView/ScreenView'
+import StateView from './ScreenView/ScreenView'
 import GameView from './GameView/GameView'
 
 class SonicJump4ReactEngine extends React.Component {
@@ -16,7 +16,7 @@ class SonicJump4ReactEngine extends React.Component {
   render () {
     return(
       <div className="SonicJump_Screen">
-        {this.state.running ? <GameView run={this.toggleRun} /> : <ScreenView start={this.toggleRun} />}
+        {this.state.running ? <GameView run={this.toggleRun} /> : <StateView start={this.toggleRun} />}
       </div>
     )
   }

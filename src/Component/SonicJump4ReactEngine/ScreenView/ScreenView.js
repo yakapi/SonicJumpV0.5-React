@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import './ScreenView.css'
+import {useSelector} from 'react-redux'
 
 class ScreenView extends React.Component {
   constructor(props){
@@ -24,11 +25,11 @@ class ScreenView extends React.Component {
           <div className="ScoreBoard">
             <div className="LatestScore">
               <h2>Your Score :</h2>
-              <p>0</p>
+              <p>{this.props.score}</p>
             </div>
             <div className="BestScore">
               <h2>Best Score :</h2>
-              <p>0</p>
+              <p>{this.props.bestScore}</p>
             </div>
           </div>
           <div className="StartPanel">
@@ -44,4 +45,12 @@ class ScreenView extends React.Component {
   }
 }
 
-export default ScreenView;
+
+export default function StateView({start}){
+  const {score, best_score} = useSelector(state => ({
+    ...state.scoreReducers
+  }))
+  return(
+    <ScreenView start={start} score={score} bestScore={best_score}/>
+  )
+}
